@@ -2,7 +2,7 @@ package com.solvd.laba.CarService.serviceManagement;
 
 import com.solvd.laba.CarService.billing.Cost;
 
-public class Service {
+public class Service implements ServiceManagementInterface {
     private String name;
     private Part partsNeeded;
     private Cost[] costs;
@@ -19,6 +19,12 @@ public class Service {
         this.costs = costs;
         totalServicesPerformed++;
     }
+
+    @Override
+    public String getServiceInfo() { return "Service: " + name; }
+
+    @Override
+    public int getTotalServicesPerformed() { return totalServicesPerformed; }
 
     public String getName() {
         return name;
@@ -44,8 +50,5 @@ public class Service {
         this.costs = costs;
     }
 
-    public static int getTotalServicesPerformed() {
-        return totalServicesPerformed;
-    }
 
 }

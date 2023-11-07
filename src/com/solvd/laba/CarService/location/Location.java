@@ -10,6 +10,10 @@ public class Location {
     private double ratings;
     private static int locationCount = 0;
 
+    static { // this is Static block
+        locationCount = 0;
+    }
+
     public Location(String city, String country, String branchName) {
         this.city = city;
         this.country = country;

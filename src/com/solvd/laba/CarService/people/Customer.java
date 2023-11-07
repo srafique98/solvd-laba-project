@@ -6,7 +6,7 @@ import com.solvd.laba.CarService.serviceManagement.Vehicle;
 
 import java.util.Arrays;
 
-public class Customer extends Person {
+public class Customer extends Person implements PersonInterface {
     private Vehicle[] vehicles;
     private Appointment[] appointments;
     private Invoice[] invoices;
@@ -23,6 +23,16 @@ public class Customer extends Person {
         this.vehicles = vehicles;
         this.appointments = appointments;
         this.invoices = invoices;
+    }
+
+    @Override
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    @Override
+    public String getInfo() {
+        return "Customer Details: " + getFullName();
     }
 
     public Vehicle[] getVehicles() {
@@ -49,15 +59,6 @@ public class Customer extends Person {
         this.invoices = invoices;
     }
 
-    @Override
-    public String getFullName() {
-        return firstName + " " + lastName;
-    }
-
-    @Override
-    public String getInfo() {
-        return "Customer Details: " + getFullName();
-    }
 
     @Override
     public String toString() {
@@ -73,9 +74,8 @@ public class Customer extends Person {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Customer customer)) return false;
         if (!super.equals(o)) return false;
-        Customer customer = (Customer) o;
         return Arrays.equals(getVehicles(), customer.getVehicles()) && Arrays.equals(getAppointments(), customer.getAppointments()) && Arrays.equals(getInvoices(), customer.getInvoices());
     }
 

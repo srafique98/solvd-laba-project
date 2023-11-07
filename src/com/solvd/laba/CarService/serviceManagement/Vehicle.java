@@ -96,11 +96,11 @@ public class Vehicle {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Vehicle vehicle)) return false;
-        return Objects.equals(owner, vehicle.owner) && Objects.equals(getModel(), vehicle.getModel()) && Objects.equals(getMake(), vehicle.getMake());
+        return isSalvage() == vehicle.isSalvage() && Objects.equals(owner, vehicle.owner) && Objects.equals(getModelYear(), vehicle.getModelYear()) && Objects.equals(getModel(), vehicle.getModel()) && Objects.equals(getMake(), vehicle.getMake()) && Objects.equals(getManufactureDate(), vehicle.getManufactureDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(owner, getModel(), getMake());
+        return Objects.hash(owner, getModelYear(), getModel(), getMake(), getManufactureDate(), isSalvage());
     }
 }

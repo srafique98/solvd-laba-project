@@ -4,7 +4,7 @@ import com.solvd.laba.CarService.location.Location;
 
 import java.util.Objects;
 
-public class Employee extends Person {
+public class Employee extends Person implements PersonInterface {
     private Location location;
     private String jobTittle;
     private double salary;
@@ -48,7 +48,7 @@ public class Employee extends Person {
 
     @Override
     public String getInfo() {
-        return "Customer Details: " + getFullName();
+        return "Employee Details:: " + getFullName();
     }
 
     @Override
