@@ -1,28 +1,28 @@
-package com.solvd.laba.Lab3;
+package com.solvd.laba.CarService.people;
+
+import com.solvd.laba.CarService.serviceManagement.Appointment;
+import com.solvd.laba.CarService.billing.Invoice;
+import com.solvd.laba.CarService.serviceManagement.Vehicle;
 
 import java.util.Arrays;
-import java.util.Objects;
 
-public class Customer extends Person{
+public class Customer extends Person {
     private Vehicle[] vehicles;
     private Appointment[] appointments;
     private Invoice[] invoices;
-    private Service[] services;
 
-    public Customer(String fName, String lName, Vehicle[] vehicles, Appointment[] appointments, Invoice[] invoices, Service[] services) {
+    public Customer(String fName, String lName, Vehicle[] vehicles) {
+        super(fName,lName);
+        this.vehicles = vehicles;
+        this.appointments = new Appointment[0];
+        this.invoices = new Invoice[0];
+    }
+
+    public Customer(String fName, String lName, Vehicle[] vehicles, Appointment[] appointments, Invoice[] invoices) {
         super(fName,lName);
         this.vehicles = vehicles;
         this.appointments = appointments;
         this.invoices = invoices;
-        this.services = services;
-    }
-
-    public Service[] getServices() {
-        return services;
-    }
-
-    public void setServices(Service[] services) {
-        this.services = services;
     }
 
     public Vehicle[] getVehicles() {
@@ -65,7 +65,6 @@ public class Customer extends Person{
                 "vehicles=" + Arrays.toString(vehicles) +
                 ", appointments=" + Arrays.toString(appointments) +
                 ", invoices=" + Arrays.toString(invoices) +
-                ", services=" + Arrays.toString(services) +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
@@ -77,7 +76,7 @@ public class Customer extends Person{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Customer customer = (Customer) o;
-        return Arrays.equals(getVehicles(), customer.getVehicles()) && Arrays.equals(getAppointments(), customer.getAppointments()) && Arrays.equals(getInvoices(), customer.getInvoices()) && Arrays.equals(getServices(), customer.getServices());
+        return Arrays.equals(getVehicles(), customer.getVehicles()) && Arrays.equals(getAppointments(), customer.getAppointments()) && Arrays.equals(getInvoices(), customer.getInvoices());
     }
 
     @Override
@@ -86,7 +85,6 @@ public class Customer extends Person{
         result = 31 * result + Arrays.hashCode(getVehicles());
         result = 31 * result + Arrays.hashCode(getAppointments());
         result = 31 * result + Arrays.hashCode(getInvoices());
-        result = 31 * result + Arrays.hashCode(getServices());
         return result;
     }
 }

@@ -1,4 +1,9 @@
-package com.solvd.laba.Lab2;
+package com.solvd.laba.CarService;
+
+import com.solvd.laba.CarService.location.Location;
+import com.solvd.laba.CarService.people.Employee;
+import com.solvd.laba.CarService.people.Customer;
+import com.solvd.laba.CarService.serviceManagement.Service;
 
 public class CarService {
     private Customer[] customers;

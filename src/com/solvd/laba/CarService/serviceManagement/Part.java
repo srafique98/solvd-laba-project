@@ -1,10 +1,16 @@
-package com.solvd.laba.Lab3;
+package com.solvd.laba.CarService.serviceManagement;
+
+import com.solvd.laba.CarService.billing.Cost;
 
 public class Part {
     private String serialNumber; // Aka part Number
     private Cost cost;
     private String description;
     private String manufacturer;
+
+    public Part(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
 
     public Part(String serialNumber, Cost cost, String description, String manufacturer) {
         this.serialNumber = serialNumber;

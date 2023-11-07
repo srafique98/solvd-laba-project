@@ -1,10 +1,17 @@
-package com.solvd.laba.Lab2;
+package com.solvd.laba.CarService.serviceManagement;
+
+import com.solvd.laba.CarService.billing.Cost;
 
 public class Service {
     private String name;
     private Part partsNeeded;
     private Cost[] costs;
     private static int totalServicesPerformed = 0;
+
+    public Service(String name) { //Maybe free consultation
+        this.name = name;
+        totalServicesPerformed++;
+    }
 
     public Service(String name, Part partsNeeded, Cost[] costs) {
         this.name = name;

@@ -1,4 +1,8 @@
-package com.solvd.laba.Lab2;
+package com.solvd.laba.CarService.billing;
+
+import com.solvd.laba.CarService.serviceManagement.Service;
+import com.solvd.laba.CarService.people.Customer;
+import com.solvd.laba.CarService.serviceManagement.Vehicle;
 
 import java.time.LocalDate;
 
@@ -7,9 +11,15 @@ public class Invoice {
     private Vehicle vehicle;
     private Service service;
     private LocalDate dateCreated;
-    private double totalCost;
+    private Cost totalCost;
 
-    public Invoice(Customer customer, Vehicle vehicle, Service service, LocalDate dateCreated, double totalCost) {
+    public Invoice(Customer customer, LocalDate dateCreated, Cost totalCost) {
+        this.customer = customer;
+        this.dateCreated = dateCreated;
+        this.totalCost = totalCost;
+    }
+
+    public Invoice(Customer customer, Vehicle vehicle, Service service, LocalDate dateCreated, Cost totalCost) {
         this.customer = customer;
         this.vehicle = vehicle;
         this.service = service;
@@ -21,11 +31,12 @@ public class Invoice {
         return customer;
     }
 
-    public double getTotalCost() {
+
+    public Cost getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(double totalCost) {
+    public void setTotalCost(Cost totalCost) {
         this.totalCost = totalCost;
     }
 

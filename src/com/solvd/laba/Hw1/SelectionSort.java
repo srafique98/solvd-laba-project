@@ -1,4 +1,4 @@
-package com.solvd.laba.Lab1;
+package com.solvd.laba.Hw1;
 
 public class SelectionSort {
     public static void main(String[] args) {

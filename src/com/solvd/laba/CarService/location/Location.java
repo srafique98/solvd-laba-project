@@ -1,4 +1,4 @@
-package com.solvd.laba.Lab2;
+package com.solvd.laba.CarService.location;
 
 import java.time.LocalDate;
 
@@ -9,6 +9,13 @@ public class Location {
     private LocalDate establishedDate;
     private double ratings;
     private static int locationCount = 0;
+
+    public Location(String city, String country, String branchName) {
+        this.city = city;
+        this.country = country;
+        this.branchName = branchName;
+        locationCount++;
+    }
 
     public Location(String city, String country, String branchName, LocalDate establishedDate, double ratings) {
         this.city = city;

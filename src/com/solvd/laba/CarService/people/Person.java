@@ -1,4 +1,4 @@
-package com.solvd.laba.Lab3;
+package com.solvd.laba.CarService.people;
 
 import java.util.Objects;
 
