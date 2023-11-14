@@ -1,8 +1,10 @@
-package com.solvd.laba.CarService.serviceManagement;
+package com.solvd.laba.carService.serviceManagement;
 
-import com.solvd.laba.CarService.billing.Cost;
+import com.solvd.laba.carService.billing.Cost;
+import com.solvd.laba.carService.interfaces.Chargeable;
+import com.solvd.laba.carService.interfaces.Scheduleable;
 
-public class Service implements ServiceManagementInterface {
+public class Service implements Chargeable {
     private String name;
     private Part partsNeeded;
     private Cost[] costs;
@@ -20,10 +22,10 @@ public class Service implements ServiceManagementInterface {
         totalServicesPerformed++;
     }
 
-    @Override
+//    @Override
     public String getServiceInfo() { return "Service: " + name; }
 
-    @Override
+//    @Override
     public int getTotalServicesPerformed() { return totalServicesPerformed; }
 
     public String getName() {
@@ -48,6 +50,27 @@ public class Service implements ServiceManagementInterface {
 
     public void setCosts(Cost[] costs) {
         this.costs = costs;
+    }
+
+
+    @Override
+    public double calculateCharge() {
+        double totalCost = 0.0;
+        for (Cost cost : costs) {
+            totalCost += cost.getCost();
+        }
+        return totalCost;
+    }
+
+    @Override
+    public void applyDiscount(double discountPercentage) {
+        double discountAmount = this.calculateCharge() * discountPercentage;
+        this.setTotalCost(this.calculateCharge() - discountAmount);
+    }
+
+    public void setTotalCost(double totalCost) {
+        this.costs = new Cost[1];
+        this.costs[0] = new Cost(totalCost, "USD");
     }
 
 

@@ -1,13 +1,16 @@
-package com.solvd.laba.CarService.people;
+package com.solvd.laba.carService.people;
 
-import com.solvd.laba.CarService.location.Location;
+import com.solvd.laba.carService.interfaces.Displayable;
+import com.solvd.laba.carService.interfaces.Ratable;
+import com.solvd.laba.carService.location.Location;
 
 import java.util.Objects;
 
-public class Employee extends Person implements PersonInterface {
+public class Employee extends Person implements Displayable, Ratable {
     private Location location;
     private String jobTittle;
     private double salary;
+    private double ratings;
 
     public Employee(String fName, String lName, Location location, String jobTittle, double salary) {
         super(fName,lName);
@@ -73,5 +76,16 @@ public class Employee extends Person implements PersonInterface {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getLocation(), getJobTittle(), getSalary());
+    }
+
+    @Override
+    public double getRating() {
+        return this.ratings;
+    }
+
+    @Override
+    public void rate(double newRating) {
+        System.out.println("Rating the employee with a new rating of " + newRating);
+        this.ratings = newRating;
     }
 }

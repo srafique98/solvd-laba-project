@@ -1,15 +1,21 @@
-package com.solvd.laba.CarService.serviceManagement;
+package com.solvd.laba.carService.serviceManagement;
 
-import com.solvd.laba.CarService.billing.Cost;
+import com.solvd.laba.carService.billing.Cost;
+import com.solvd.laba.carService.interfaces.Repairable;
 
-public class Part {
+import java.util.Objects;
+
+public class Part implements Repairable {
     private String serialNumber; // Aka part Number
     private Cost cost;
     private String description;
     private String manufacturer;
+    private String condition; // New, Used, Good, Fair, Poor
 
-    public Part(String serialNumber) {
+    public Part(String serialNumber, Cost cost) {
+
         this.serialNumber = serialNumber;
+        this.cost = cost;
     }
 
     public Part(String serialNumber, Cost cost, String description, String manufacturer) {
@@ -49,5 +55,30 @@ public class Part {
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
+    }
+
+    @Override
+    public String toString() {
+        return "Part{" +
+                "serialNumber='" + serialNumber + '\'' +
+                ", cost=" + cost +
+                ", description='" + description + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                '}';
+    }
+
+    @Override
+    public void repair() {
+        if (this.isDamaged()){
+            System.out.println(this.serialNumber + " is getting repaired");
+        }
+    }
+
+    @Override
+    public boolean isDamaged() {
+        if (this.condition.equals("Poor")){
+            return true;
+        }
+        return false;
     }
 }

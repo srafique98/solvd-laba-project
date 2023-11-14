@@ -1,8 +1,8 @@
-package com.solvd.laba.CarService.billing;
+package com.solvd.laba.carService.billing;
 
-import com.solvd.laba.CarService.serviceManagement.Service;
-import com.solvd.laba.CarService.people.Customer;
-import com.solvd.laba.CarService.serviceManagement.Vehicle;
+import com.solvd.laba.carService.serviceManagement.Service;
+import com.solvd.laba.carService.people.Customer;
+import com.solvd.laba.carService.serviceManagement.Vehicle;
 
 import java.time.LocalDate;
 

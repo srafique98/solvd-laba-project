@@ -1,6 +1,6 @@
-package com.solvd.laba.CarService.utils;
+package com.solvd.laba.carService.utils;
 
-import com.solvd.laba.CarService.people.Person;
+import com.solvd.laba.carService.people.Person;
 
 public class CarServiceUtils {
     public static void printPersonDetails(Person person) {

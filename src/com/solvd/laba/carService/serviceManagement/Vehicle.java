@@ -1,18 +1,21 @@
-package com.solvd.laba.CarService.serviceManagement;
+package com.solvd.laba.carService.serviceManagement;
 
-import com.solvd.laba.CarService.people.Person;
+import com.solvd.laba.carService.interfaces.Repairable;
+import com.solvd.laba.carService.people.Person;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Objects;
 
-public class Vehicle {
+public class Vehicle implements Repairable {
 
     protected Person owner;
     private LocalDate modelYear;
     private String model;
     private String make;
     private LocalDate manufactureDate;
-    private boolean salvage;
+    private Part[] damagedParts;
+    private boolean isDamaged;
 
     public Vehicle(LocalDate modelYear, String model, String make, Person owner) {
         this.modelYear = modelYear;
@@ -21,12 +24,12 @@ public class Vehicle {
         this.owner = owner;
     }
 
-    public Vehicle(LocalDate modelYear, String model, String make, LocalDate manufactureDate, boolean salvage, Person owner) {
+    public Vehicle(LocalDate modelYear, String model, String make, LocalDate manufactureDate, boolean isDamaged, Person owner) {
         this.modelYear = modelYear;
         this.model = model;
         this.make = make;
         this.manufactureDate = manufactureDate;
-        this.salvage = salvage;
+        this.isDamaged = isDamaged;
         this.owner = owner;
     }
 
@@ -62,14 +65,6 @@ public class Vehicle {
         this.manufactureDate = manufactureDate;
     }
 
-    public boolean isSalvage() {
-        return salvage;
-    }
-
-    public void setSalvage(boolean salvage) {
-        this.salvage = salvage;
-    }
-
     public boolean isOlderThan(int years) {
         LocalDate currentDate = LocalDate.now();
         return currentDate.getYear() - manufactureDate.getYear() > years;
@@ -88,7 +83,8 @@ public class Vehicle {
                 ", model='" + model + '\'' +
                 ", make='" + make + '\'' +
                 ", manufactureDate=" + manufactureDate +
-                ", salvage=" + salvage +
+                ", damagedParts=" + Arrays.toString(damagedParts) +
+                ", isDamaged=" + isDamaged +
                 '}';
     }
 
@@ -96,11 +92,23 @@ public class Vehicle {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Vehicle vehicle)) return false;
-        return isSalvage() == vehicle.isSalvage() && Objects.equals(owner, vehicle.owner) && Objects.equals(getModelYear(), vehicle.getModelYear()) && Objects.equals(getModel(), vehicle.getModel()) && Objects.equals(getMake(), vehicle.getMake()) && Objects.equals(getManufactureDate(), vehicle.getManufactureDate());
+        return isDamaged() == vehicle.isDamaged() && Objects.equals(owner, vehicle.owner) && Objects.equals(getModelYear(), vehicle.getModelYear()) && Objects.equals(getModel(), vehicle.getModel()) && Objects.equals(getMake(), vehicle.getMake()) && Objects.equals(getManufactureDate(), vehicle.getManufactureDate()) && Arrays.equals(damagedParts, vehicle.damagedParts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(owner, getModelYear(), getModel(), getMake(), getManufactureDate(), isSalvage());
+        int result = Objects.hash(owner, getModelYear(), getModel(), getMake(), getManufactureDate(), isDamaged());
+        result = 31 * result + Arrays.hashCode(damagedParts);
+        return result;
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("The following parts are getting reparied: " + Arrays.toString(damagedParts));
+    }
+
+    @Override
+    public boolean isDamaged() {
+        return this.isDamaged;
     }
 }

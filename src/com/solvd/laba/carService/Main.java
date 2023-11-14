@@ -1,12 +1,12 @@
-package com.solvd.laba.CarService;
+package com.solvd.laba.carService;
 
-import com.solvd.laba.CarService.billing.Cost;
-import com.solvd.laba.CarService.location.Location;
-import com.solvd.laba.CarService.people.Customer;
-import com.solvd.laba.CarService.people.Employee;
-import com.solvd.laba.CarService.serviceManagement.Part;
-import com.solvd.laba.CarService.serviceManagement.Service;
-import com.solvd.laba.CarService.serviceManagement.Vehicle;
+import com.solvd.laba.carService.billing.Cost;
+import com.solvd.laba.carService.location.Location;
+import com.solvd.laba.carService.people.Customer;
+import com.solvd.laba.carService.people.Employee;
+import com.solvd.laba.carService.serviceManagement.Part;
+import com.solvd.laba.carService.serviceManagement.Service;
+import com.solvd.laba.carService.serviceManagement.Vehicle;
 
 import java.time.LocalDate;
 
@@ -50,5 +50,9 @@ public class Main {
 //        for (Location location : carService.getLocations()) {
 //            System.out.println(location);
 //        }
+
+
+
+
     }
 }

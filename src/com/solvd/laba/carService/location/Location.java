@@ -1,8 +1,10 @@
-package com.solvd.laba.CarService.location;
+package com.solvd.laba.carService.location;
+
+import com.solvd.laba.carService.interfaces.Ratable;
 
 import java.time.LocalDate;
 
-public class Location {
+public class Location implements Ratable {
     private String city;
     private String country;
     private String branchName;
@@ -62,14 +64,6 @@ public class Location {
         this.establishedDate = establishedDate;
     }
 
-    public double getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(double ratings) {
-        this.ratings = ratings;
-    }
-
     public static int getLocationCount() {
         return locationCount;
     }
@@ -81,5 +75,16 @@ public class Location {
     public int yearsOfService() {
         LocalDate currentDate = LocalDate.now();
         return currentDate.getYear() - establishedDate.getYear();
+    }
+
+    @Override
+    public double getRating() {
+        return this.ratings;
+    }
+
+    @Override
+    public void rate(double newRating) {
+        System.out.println("Rating the location with a new rating of " + newRating);
+        this.ratings = newRating;
     }
 }
