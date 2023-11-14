@@ -13,7 +13,7 @@ public class Appointment implements Scheduleable {
     private Invoice invoice;
     private LocalDate scheduleDate;
     private LocalTime appointmentTime;
-    private String status; // Make Enum.. Scheduled, in progress, completed, cancelled
+    private String status; // Scheduled, in progress, completed, cancelled
 
     public Appointment(Customer customer, LocalDate scheduleDate, String status) {
         this.customer = customer;

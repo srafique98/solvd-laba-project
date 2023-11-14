@@ -1,10 +1,11 @@
 package com.solvd.laba.carService.location;
 
+import com.solvd.laba.carService.interfaces.Displayable;
 import com.solvd.laba.carService.interfaces.Ratable;
 
 import java.time.LocalDate;
 
-public class Location implements Ratable {
+public class Location implements Ratable, Displayable {
     private String city;
     private String country;
     private String branchName;
@@ -86,5 +87,15 @@ public class Location implements Ratable {
     public void rate(double newRating) {
         System.out.println("Rating the location with a new rating of " + newRating);
         this.ratings = newRating;
+    }
+
+    @Override
+    public String getFullName() {
+        return this.branchName;
+    }
+
+    @Override
+    public String getInfo() {
+        return this.toString();
     }
 }

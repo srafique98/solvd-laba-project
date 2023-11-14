@@ -38,7 +38,7 @@ public class Customer extends Person implements Displayable, Scheduleable {
 
     @Override
     public String getInfo() {
-        return "Customer Details: " + getFullName();
+        return "Customer Details: " + this.toString();
     }
 
     public List<Vehicle> getVehicles() {
